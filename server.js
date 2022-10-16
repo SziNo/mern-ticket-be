@@ -1,4 +1,5 @@
 const path = require('path')
+const cors = require('cors')
 const express = require('express')
 require('colors')
 require('dotenv').config()
@@ -11,8 +12,10 @@ connectDB()
 
 const app = express()
 
+// Middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(cors())
 
 // Routes
 app.use('/api/users', require('./routes/userRoutes'))
